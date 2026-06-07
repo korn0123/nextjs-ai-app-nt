@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import type { Metadata } from "next";
-import FrontNavbar from "@/components/front-navbar";
 import "../globals.css";
+import Navbar from "@/components/navbar";
 
 export const metadata: Metadata = {
   title: "ระบบ E-Commerce",
@@ -17,7 +17,7 @@ export default function RootLayout({
     <html lang="th" className="font-sans">
       <body>
         <Suspense fallback={<div className="h-16 border-b bg-background" />}>
-          <FrontNavbar />
+        <Navbar />
         </Suspense>
         {children}
       </body>
