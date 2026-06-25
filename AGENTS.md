@@ -6,6 +6,11 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 # Project: nextjs-ai-app-starter
 
+## Development Guidelines
+
+For TypeScript code style and best practices: @docs/typescript-guidelines.md
+
+
 ## Commands
 - `npm run dev` — start dev server (http://localhost:3000)
 - `npm run build` — production build
