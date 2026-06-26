@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { UseFormReturn, FieldValues, Controller } from "react-hook-form"
+import { UseFormReturn, FieldValues, FieldPath, Controller } from "react-hook-form"
 import { cn } from "@/lib/utils"
 import { Field, FieldLabel, FieldError } from "./field"
 
@@ -18,7 +18,7 @@ const Form = React.forwardRef<HTMLFormElement, React.ComponentPropsWithoutRef<"f
 )
 Form.displayName = "Form"
 
-const FormField = <TFieldValues extends FieldValues = FieldValues, TName extends TFieldValues["keyof"] = TName>(
+const FormField = <TFieldValues extends FieldValues = FieldValues, TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>>(
   {
     control,
     name,

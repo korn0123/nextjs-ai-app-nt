@@ -2,7 +2,11 @@ import { NextResponse } from 'next/server'
 import { Resend } from 'resend'
 import { contactSchema } from '@/lib/validations/contact'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+function getResend() {
+  const key = process.env.RESEND_API_KEY
+  if (!key) return null
+  return new Resend(key)
+}
 
 export async function POST(req: Request) {
   try {
@@ -17,6 +21,14 @@ export async function POST(req: Request) {
     }
 
     const { name, email, message } = result.data
+
+    const resend = getResend()
+    if (!resend) {
+      return NextResponse.json(
+        { success: false, error: 'อีเมลยังไม่ได้กำหนดค่า' },
+        { status: 500 }
+      )
+    }
 
     await resend.emails.send({
       from: 'Contact Form <onboarding@resend.dev>',
